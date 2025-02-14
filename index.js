@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
+app.use(cors({ origin: '*' })); 
+
 const io = new Server(server, {
     cors: {
         origin: "*", 
@@ -129,6 +131,9 @@ io.on("connection", (socket) => {
     })
     socket.on("updateRequest",(data)=>{
         io.emit("updateQuery", data);  //after feas complted submitted to admin
+    })
+    socket.on("commentsEdited",(data)=>{
+        io.emit("planCommentsEdited", data);  //after feas complted submitted to admin
     })
 
     socket.on("disconnect", () => {
