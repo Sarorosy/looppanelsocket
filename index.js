@@ -136,6 +136,10 @@ io.on("connection", (socket) => {
         io.emit("planCommentsEdited", data);  //after feas complted submitted to admin
     })
 
+    socket.on("quotePriceEdited",(data)=>{
+        io.emit("quotePriceUpdated", data);  //after feas complted submitted to admin
+    })
+
     socket.on("disconnect", () => {
         console.log("A user disconnected:", socket.id);
     });
