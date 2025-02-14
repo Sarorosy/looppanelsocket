@@ -112,6 +112,19 @@ io.on("connection", (socket) => {
         io.emit("chatresponse", data);
     });
 
+    socket.on("addedTags", async (data) => {
+        io.emit("tagsUpdated", data);
+    });
+    socket.on("addedFollowers", async (data) => {
+        console.log("tags")
+        io.emit("followersUpdated", data);
+    });
+
+    socket.on("editedFeasibilityComments", async (data) => {
+        console.log("tags")
+        io.emit("feasibilityCommentsUpdated", data);
+    });
+
     socket.on("quoteSubmitted",(data)=>{
         io.emit("quoteReceived", data);
     })
