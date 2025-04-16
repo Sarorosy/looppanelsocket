@@ -124,6 +124,9 @@ io.on("connection", (socket) => {
         console.log("tags")
         io.emit("feasibilityCommentsUpdated", data);
     });
+    socket.on("closeallusersessions", async (data) => {
+        io.emit("terminateallsessions", data);
+    });
 
     socket.on("quoteSubmitted",(data)=>{
         io.emit("quoteReceived", data);
